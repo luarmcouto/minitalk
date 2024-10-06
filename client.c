@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luarodri <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: luarodri <luarodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 18:55:13 by luarodri          #+#    #+#             */
-/*   Updated: 2024/10/04 19:15:00 by luarodri         ###   ########.fr       */
+/*   Updated: 2024/10/05 20:33:13 by luarodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void    tobinary(int pid, char letter)
+void	tobinary(int pid, char letter)
 {
 	int	bit;
 
@@ -23,12 +23,12 @@ void    tobinary(int pid, char letter)
 			kill(pid, SIGUSR1);
 		else
 			kill(pid, SIGUSR2);
-		usleep(100);
+		usleep(150);
 		bit++;
 	}
 }
 
-void	message_handle(int pid, char *message)
+void	message_handler(int pid, char *message)
 {
 	int	i;
 
@@ -37,6 +37,7 @@ void	message_handle(int pid, char *message)
 	{
 		tobinary(pid, message[i]);
 		i++;
+		usleep(150);
 	}
 	tobinary(pid, '\n');
 }
@@ -45,7 +46,6 @@ int	main(int argc, char **argv)
 {
 	if (argc != 3)
 		return (1);
-	message_handle(ft_atoi(argv[1]), argv[2]);
+	message_handler(ft_atoi(argv[1]), argv[2]);
 	return (0);
 }
-                                                            

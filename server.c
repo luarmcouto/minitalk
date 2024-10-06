@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luarodri <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: luarodri <luarodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 18:57:25 by luarodri          #+#    #+#             */
-/*   Updated: 2024/10/04 19:34:29 by luarodri         ###   ########.fr       */
+/*   Updated: 2024/10/06 01:12:39 by luarodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,16 @@ char	*g_message;
 
 char	*strjoinmini(char *s1, char *s2)
 {
-	char    *cat;
-	size_t  i;
-	size_t  h;
+	char	*cat;
+	size_t	i;
+	size_t	h;
 
 	i = -1;
 	if (!s1)
 	{
 		s1 = malloc(sizeof(char) * 1);
+		if (!s1)
+			return (NULL);
 		s1[0] = '\0';
 	}
 	cat = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
@@ -39,11 +41,11 @@ char	*strjoinmini(char *s1, char *s2)
 	return (cat);
 }
 
-void    sig_handle(int signum)
+void	handler(int signum)
 {
-	static int      bit;
-	static int      i;
-	char            *letter;
+	static int		bit = 0;
+	static int		i = 0;
+	char			*letter;
 
 	if (signum == SIGUSR1)
 		i |= (1 << bit);
@@ -70,18 +72,16 @@ void    sig_handle(int signum)
 
 int	main(void)
 {
-	int	pid;
+	struct sigaction	sa;
 
-	pid = getpid();
-	if (pid == -1)
-		ft_printf("error pid\n");
-	ft_printf("\t\t\tWelcome to Lua's server\n");
-	ft_printf("PID = %d\n", pid);
+	sigemptyset(&sa.sa_mask);
+	sa.sa_handler = &handler;
+	sa.sa_flags = SA_RESTART;
+	sigaction(SIGUSR1, &sa, NULL);
+	sigaction(SIGUSR2, &sa, NULL);
+	ft_printf("\t\t\tWelcome to Lua's server\n\t\t\t\tPID = %d\n", getpid());
 	while (1)
 	{
-		signal(SIGUSR1, sig_handle);
-		signal(SIGUSR2, sig_handle);
 		pause();
 	}
 }
-
