@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: luarodri <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: luamonteiro <luamonteiro@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/04 19:00:56 by luarodri          #+#    #+#              #
-#    Updated: 2024/10/05 22:35:46 by luarodri         ###   ########.fr        #
+#    Updated: 2024/10/08 10:41:23 by luamonteiro      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,17 +22,18 @@ RM = rm -rf
 
 all:	${NAMEC} ${NAMES}
 
-${LIBFT}:
-	@make -C libft
-${PRINTF}:
+${PRINTF} ${LIBFT}:
 	@make -C ft_printf
 ${NAMEC}: ${LIBFT} ${PRINTF}
 	@${CC} ${SRCS} ${LIBFT} ${PRINTF} ${FLAGS} -o ${NAMEC}
 ${NAMES}: ${LIBFT} ${PRINTF}
-	${CC} ${SRSS} ${LIBFT} ${PRINTF} ${FLAGS} -o ${NAMES}
+	@${CC} ${SRSS} ${LIBFT} ${PRINTF} ${FLAGS} -o ${NAMES}
 clean:
-	@$(RM) ${NAMEC}
-	@$(RM) ${NAMES}
+	@$(RM) ${NAMEC} ${NAMES}
+	@echo CLEAN
+fclean:
+	@$(RM) ${NAMEC} ${NAMES}
+	@$(RM) client.dSYM server.dSYM
 	@cd $(PRINTFCL) && make fclean
 	@echo ALL CLEAR
 re: clean all

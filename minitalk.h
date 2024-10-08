@@ -13,9 +13,7 @@
 #ifndef MINITALK_H
 # define MINITALK_H
 
-# include <aio.h>
 # include <unistd.h>
-# include <bsd/string.h>
 # include <stdlib.h>
 # include <signal.h>
 # include "ft_printf/libft/libft.h"
