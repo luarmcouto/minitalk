@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luarodri <luarodri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luamonteiro <luamonteiro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/04 19:00:16 by luarodri          #+#    #+#             */
-/*   Updated: 2024/10/12 21:20:52 by luarodri         ###   ########.fr       */
+/*   Created: 2024/05/10 16:57:21 by luamonteiro       #+#    #+#             */
+/*   Updated: 2024/05/20 16:41:08 by luamonteiro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "libft.h"
 
-# include <aio.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include <signal.h>
-# include "libft/ft_lib/libft.h"
-# include "libft/ft_printf/ft_printf.h"
-
-#endif
+int	ft_toupper(int c)
+{
+	if (c >= 97 && c <= 122)
+		return (c - 32);
+	return (c);
+}

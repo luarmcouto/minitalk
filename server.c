@@ -6,7 +6,7 @@
 /*   By: luarodri <luarodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 18:57:25 by luarodri          #+#    #+#             */
-/*   Updated: 2024/10/06 01:12:39 by luarodri         ###   ########.fr       */
+/*   Updated: 2024/10/07 15:25:57 by luarodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ char	*g_message;
 
 char	*strjoinmini(char *s1, char *s2)
 {
-	char	*cat;
-	size_t	i;
-	size_t	h;
+	char		*cat;
+	size_t		i;
+	size_t		h;
 
 	i = -1;
 	if (!s1)

@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luarodri <luarodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/04 19:00:16 by luarodri          #+#    #+#             */
-/*   Updated: 2024/10/12 21:20:52 by luarodri         ###   ########.fr       */
+/*   Created: 2024/09/09 12:51:33 by luarodri          #+#    #+#             */
+/*   Updated: 2024/09/09 12:51:39 by luarodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
-# include <aio.h>
-# include <unistd.h>
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
+
 # include <stdlib.h>
-# include <signal.h>
-# include "libft/ft_lib/libft.h"
-# include "libft/ft_printf/ft_printf.h"
+# include <unistd.h>
+# include <fcntl.h>
+# include <stdio.h>
+
+char	*get_next_line(int fd);
+char	*function_read(int fd, char *str);
+char	*ft_getlines(char *left);
+char	*ft_getlefts(char *left);
+size_t	ft_strlen(char *s, char c);
+char	*ft_strjoin(char *s1, char *s2);
+char	*ft_strchr(char *s, int c);
 
 #endif
